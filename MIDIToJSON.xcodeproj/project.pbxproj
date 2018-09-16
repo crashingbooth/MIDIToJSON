@@ -12,6 +12,8 @@
 		1F1AC5DB214F0365004519C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F1AC5D9214F0365004519C6 /* Main.storyboard */; };
 		1F1AC5DD214F0367004519C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F1AC5DC214F0367004519C6 /* Assets.xcassets */; };
 		1F1AC5E0214F0367004519C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F1AC5DE214F0367004519C6 /* LaunchScreen.storyboard */; };
+		1F1AC5E8214F0387004519C6 /* CustomSequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AC5E7214F0387004519C6 /* CustomSequencer.swift */; };
+		CAD1E0CA68F8FDAE38F6CAEB /* Pods_MIDIToJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29811E3614B582326078598 /* Pods_MIDIToJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,10 @@
 		1F1AC5DC214F0367004519C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F1AC5DF214F0367004519C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F1AC5E1214F0367004519C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F1AC5E7214F0387004519C6 /* CustomSequencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSequencer.swift; sourceTree = "<group>"; };
+		B636D250B36128557DFA71B7 /* Pods-MIDIToJSON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIToJSON.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIToJSON/Pods-MIDIToJSON.release.xcconfig"; sourceTree = "<group>"; };
+		D29811E3614B582326078598 /* Pods_MIDIToJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIDIToJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF23500F756BD3E7D83B0368 /* Pods-MIDIToJSON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIToJSON.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIToJSON/Pods-MIDIToJSON.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD1E0CA68F8FDAE38F6CAEB /* Pods_MIDIToJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				1F1AC5D4214F0365004519C6 /* MIDIToJSON */,
 				1F1AC5D3214F0365004519C6 /* Products */,
+				ABA61567AE5FD335896BAB67 /* Pods */,
+				E630CC9FC7F23688CD030E3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				1F1AC5D5214F0365004519C6 /* AppDelegate.swift */,
+				1F1AC5E7214F0387004519C6 /* CustomSequencer.swift */,
 				1F1AC5D7214F0365004519C6 /* ViewController.swift */,
 				1F1AC5D9214F0365004519C6 /* Main.storyboard */,
 				1F1AC5DC214F0367004519C6 /* Assets.xcassets */,
@@ -64,6 +74,23 @@
 			path = MIDIToJSON;
 			sourceTree = "<group>";
 		};
+		ABA61567AE5FD335896BAB67 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF23500F756BD3E7D83B0368 /* Pods-MIDIToJSON.debug.xcconfig */,
+				B636D250B36128557DFA71B7 /* Pods-MIDIToJSON.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E630CC9FC7F23688CD030E3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D29811E3614B582326078598 /* Pods_MIDIToJSON.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F1AC5E4214F0367004519C6 /* Build configuration list for PBXNativeTarget "MIDIToJSON" */;
 			buildPhases = (
+				56E6A5C4C7BA8FDC6AEF07AD /* [CP] Check Pods Manifest.lock */,
 				1F1AC5CE214F0365004519C6 /* Sources */,
 				1F1AC5CF214F0365004519C6 /* Frameworks */,
 				1F1AC5D0214F0365004519C6 /* Resources */,
+				EA0C428DFE7C10BC0F5C5C64 /* [CP] Embed Pods Frameworks */,
+				7406A571E112A174922B9FF0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +160,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		56E6A5C4C7BA8FDC6AEF07AD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MIDIToJSON-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7406A571E112A174922B9FF0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIToJSON/Pods-MIDIToJSON-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA0C428DFE7C10BC0F5C5C64 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MIDIToJSON/Pods-MIDIToJSON-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MIDIToJSON/Pods-MIDIToJSON-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1F1AC5CE214F0365004519C6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -137,6 +225,7 @@
 			files = (
 				1F1AC5D8214F0365004519C6 /* ViewController.swift in Sources */,
 				1F1AC5D6214F0365004519C6 /* AppDelegate.swift in Sources */,
+				1F1AC5E8214F0387004519C6 /* CustomSequencer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,15 +367,13 @@
 		};
 		1F1AC5E5214F0367004519C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF23500F756BD3E7D83B0368 /* Pods-MIDIToJSON.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M7XW9D2D49;
 				INFOPLIST_FILE = MIDIToJSON/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.crashingbooth.MIDIToJSON;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -296,15 +383,13 @@
 		};
 		1F1AC5E6214F0367004519C6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B636D250B36128557DFA71B7 /* Pods-MIDIToJSON.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M7XW9D2D49;
 				INFOPLIST_FILE = MIDIToJSON/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.crashingbooth.MIDIToJSON;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
