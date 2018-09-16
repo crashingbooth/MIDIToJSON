@@ -14,13 +14,12 @@ class CustomSequencer {
     var callbackInst: AKCallbackInstrument!
     var tracks: [AKMusicTrack]!
     var oscBank: AKOscillatorBank!
-    var midiNode: AKMIDINode!
     var mixer: AKMixer!
     let numTracks = 5
     
     init() {
         setUpSequencer()
-        setUpOsc()
+        setUpSound()
         
     }
     
@@ -36,9 +35,15 @@ class CustomSequencer {
         }
     }
     
-    fileprivate func setUpOsc() {
+    fileprivate func setUpSound() {
+        mixer = AKMixer()
+        AudioKit.output = mixer
         oscBank = AKOscillatorBank(waveform: AKTable(.square))
-        midiNode = AKMIDINode(node: oscBank)
+        oscBank >>> mixer
+        do { try AudioKit.start()
+        } catch {
+            fatalError()
+        }
     }
     
     func callback(_ status: AKMIDIStatus, _ note: MIDINoteNumber, _ vel: MIDIVelocity) {
@@ -57,6 +62,14 @@ class CustomSequencer {
     
     func stop() {
         seq.stop()
+    }
+    
+    func loadFromURL(_ url: URL) {
+        seq.loadMIDIFile(fromURL: url)
+    }
+    
+    func loadFromJSON(_ json: [String: Any]) {
+        
     }
     
     
