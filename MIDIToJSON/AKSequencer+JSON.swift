@@ -73,19 +73,32 @@ extension AKTimeSignature {
 }
 
 extension AKSequencer {
-    func jsonify() -> [String: Any]{
-        let jsonifiedTracks = tracks.map { $0.jsonify() }
-        var result: [String: Any] = ["tracks": jsonifiedTracks]
+    func jsonifySequence() -> [String: Any]{
+        var result = [String: Any]()
+        result["tracks"] = jsonifyTracks()
         result["tempos"] = allTempoEvents.map { ["position": $0.0, "tempo": $0.1]}
         result["timesignatures"] = allTimeSignatureEvents.map {["position": $0.0, "event": $0.1.jsonify()] }
         return result
     }
     
+    func jsonifyTracks() -> [String : Any] {
+        var result = [String : Any] ()
+        for (i, track) in tracks.enumerated() {
+            if !track.getMIDINoteData().isEmpty {
+                result["\(i)"] = track.jsonify()
+            }
+        }
+        
+        return result
+    }
+    
     func parseJSONTracks(json: [String: Any], overWritingTracks: [AKMusicTrack] = [AKMusicTrack]()) -> [AKMusicTrack]? {
-        guard let tracks = json["tracks"] as? [[String: Any]] else {
+        guard let allTracks = json["tracks"] as? [String: Any] else {
             AKLog("Could not parse JSON tracks")
             return nil
         }
+        
+       
         
         // Tempo Track
         if let tempos = json["tempos"] as? [[String: Double]] {
@@ -98,10 +111,12 @@ extension AKSequencer {
         }
         
         var returnTracks = [AKMusicTrack]()
-        
-        for (i,track) in tracks.enumerated() {
+    
+        let trackKeys = allTracks.keys.sorted()
+        for (i, trackKey) in trackKeys.enumerated() {
+            guard let jsonTrack = allTracks[trackKey] as? [String : Any ] else { continue }
             let trk = i < overWritingTracks.count ? overWritingTracks[i] : newTrack()!
-            trk.writeTrackFromJSON(track)
+            trk.writeTrackFromJSON(jsonTrack)
             returnTracks.append(trk)
         }
         return returnTracks
