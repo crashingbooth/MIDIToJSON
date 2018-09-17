@@ -9,13 +9,23 @@
 import UIKit
 
 class UploaderDownloaderVC: UIViewController {
-
+    var customSeq = CustomSequencer()
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
-
-
+    @IBAction func getFileFromICloud(_ sender: Any) {
+    }
+    
+    @IBAction func play(_ sender: Any) {
+    }
+    @IBAction func stop(_ sender: Any) {
+    }
+    @IBAction func clear(_ sender: Any) {
+    }
+    
 }
+
+
