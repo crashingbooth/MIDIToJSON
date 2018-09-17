@@ -10,10 +10,11 @@ import UIKit
 
 class UploaderDownloaderVC: UIViewController {
     var customSeq = CustomSequencer()
-    let firebaseManager = FirebaseManager()
+    var firebaseManager: FirebaseManager!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        firebaseManager = FirebaseManager()
         tableView.delegate = firebaseManager
         tableView.dataSource = firebaseManager
         firebaseManager.tableViewReloadDelegate = self
@@ -33,6 +34,7 @@ class UploaderDownloaderVC: UIViewController {
         customSeq.stop()
     }
     @IBAction func clear(_ sender: Any) {
+        customSeq.clear()
     }
     
 }
@@ -48,7 +50,7 @@ extension UploaderDownloaderVC: UIDocumentPickerDelegate {
         customSeq.loadFromURL(urls[0])
         navigationController?.popViewController(animated: true)
         
-        let json = customSeq.seq.jsonifyTracks()
+        let json = customSeq.getSequencerJSON()
         let name = urls[0].lastPathComponent.filter { $0 != "."}
         firebaseManager.sendFile(title: name, fileJSON: json)
     }

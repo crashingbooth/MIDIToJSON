@@ -17,6 +17,12 @@ class FirebaseManager: NSObject, UITableViewDataSource, UITableViewDelegate {
     weak var tableViewReloadDelegate: TableViewReloadDelegate?
     weak var sequencerDelegate: SequencerDelegate?
     
+    override init() {
+        super.init()
+        setupReferences()
+        setupObservers()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filenames.count
     }
@@ -61,13 +67,9 @@ class FirebaseManager: NSObject, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Set Data
     func sendFile(title: String, fileJSON: [String : Any]) {
         filesRef.child(title).setValue(fileJSON)
-        fileIndexRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            guard var loadedFileNames = snapshot.value as? [String] else { return }
-            loadedFileNames.append(title)
-            self.fileIndexRef.setValue(loadedFileNames.sorted())
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+        filenames.append(title)
+        filenames.sort()
+        fileIndexRef.setValue(filenames)
     }
 }
 

@@ -5,7 +5,7 @@ target 'MIDIToJSON' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   pod 'AudioKit', '4.3'
-  pod 'Firebase'
+  pod 'Firebase/Core'
   pod 'Firebase/Database'
   # Pods for MIDIToJSON
 
