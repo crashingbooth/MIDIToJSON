@@ -64,13 +64,30 @@ class CustomSequencer {
         seq.stop()
     }
     
+    func clear() {
+        seq.stop()
+        setUpSequencer()
+    }
+    
     func loadFromURL(_ url: URL) {
         seq.loadMIDIFile(fromURL: url)
     }
-    
-    func loadFromJSON(_ json: [String: Any]) {
+
+}
+
+extension CustomSequencer: SequencerDelegate {
+    func loadFileFromJSON(_ json: [String : Any]) {
+        _ = seq.parseJSONTracks(json: json)
         
+        for track in tracks {
+           track.setMIDIOutput(callbackInst.midiIn)
+        }
+        
+        seq.disableLooping()
     }
     
-    
+    func getSequencerJSON() -> [String : Any] {
+        return seq.jsonifySequence()
+    }
 }
+

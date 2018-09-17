@@ -15,14 +15,22 @@ class FirebaseManager: NSObject, UITableViewDataSource, UITableViewDelegate {
     var fileIndexRef: DatabaseReference!
     var filesRef: DatabaseReference!
     weak var tableViewReloadDelegate: TableViewReloadDelegate?
+    weak var sequencerDelegate: SequencerDelegate?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return filenames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "fileCell", for: indexPath) as? UITableViewCell else { return UITableViewCell() }
+        cell.textLabel?.text = filenames[indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row < filenames.count else { return }
+        retrieveFile(filenames[indexPath.row])
     }
     
     fileprivate func setupReferences() {
@@ -31,18 +39,45 @@ class FirebaseManager: NSObject, UITableViewDataSource, UITableViewDelegate {
         filesRef = rootRef.child("files")
     }
     
+    // MARK: - Observe Data
     fileprivate func setupObservers() {
         fileIndexRef.observe(.value, with: { snapshot in
             if let val = snapshot.value as? [String] {
                 self.filenames = val
                 self.tableViewReloadDelegate?.reloadData()
             }
-            
         })
     }
     
+    func retrieveFile(_ name: String) {
+        filesRef.child(name).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let fileJSON = snapshot.value as? [String: Any] else { return }
+            self.sequencerDelegate?.loadFileFromJSON(fileJSON)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    // MARK: - Set Data
+    func sendFile(title: String, fileJSON: [String : Any]) {
+        filesRef.child(title).setValue(fileJSON)
+        fileIndexRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard var loadedFileNames = snapshot.value as? [String] else { return }
+            loadedFileNames.append(title)
+            self.fileIndexRef.setValue(loadedFileNames.sorted())
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
 }
 
 protocol TableViewReloadDelegate: class {
     func reloadData()
 }
+
+protocol SequencerDelegate: class {
+    func loadFileFromJSON(_ json: [String: Any])
+    func getSequencerJSON() -> [String: Any]
+}
+
+
