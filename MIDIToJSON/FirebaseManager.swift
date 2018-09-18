@@ -14,7 +14,7 @@ class FirebaseManager: NSObject, UITableViewDataSource, UITableViewDelegate {
     var rootRef: DatabaseReference!
     var fileIndexRef: DatabaseReference!
     var filesRef: DatabaseReference!
-    weak var tableViewReloadDelegate: TableViewReloadDelegate?
+    weak var displayDelegate: DisplayDelegate?
     weak var sequencerDelegate: SequencerDelegate?
     
     override init() {
@@ -37,6 +37,7 @@ class FirebaseManager: NSObject, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row < filenames.count else { return }
         retrieveFile(filenames[indexPath.row])
+        displayDelegate?.reloadLabel(filenames[indexPath.row])
     }
     
     fileprivate func setupReferences() {
@@ -50,7 +51,7 @@ class FirebaseManager: NSObject, UITableViewDataSource, UITableViewDelegate {
         fileIndexRef.observe(.value, with: { snapshot in
             if let val = snapshot.value as? [String] {
                 self.filenames = val
-                self.tableViewReloadDelegate?.reloadData()
+                self.displayDelegate?.reloadData()
             }
         })
     }
@@ -70,11 +71,13 @@ class FirebaseManager: NSObject, UITableViewDataSource, UITableViewDelegate {
         filenames.append(title)
         filenames.sort()
         fileIndexRef.setValue(filenames)
+        displayDelegate?.reloadLabel(title)
     }
 }
 
-protocol TableViewReloadDelegate: class {
+protocol DisplayDelegate: class {
     func reloadData()
+    func reloadLabel(_ text: String)
 }
 
 protocol SequencerDelegate: class {

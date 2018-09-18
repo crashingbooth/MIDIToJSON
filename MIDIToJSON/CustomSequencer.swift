@@ -77,6 +77,7 @@ class CustomSequencer {
 
 extension CustomSequencer: SequencerDelegate {
     func loadFileFromJSON(_ json: [String : Any]) {
+        clear()
         _ = seq.parseJSONTracks(json: json)
         
         for track in tracks {

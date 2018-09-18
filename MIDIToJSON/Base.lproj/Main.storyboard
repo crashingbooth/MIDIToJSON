@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do7-6N-0Dz">
-                                <rect key="frame" x="103" y="74" width="168" height="30"/>
+                                <rect key="frame" x="103.5" y="74" width="168" height="30"/>
                                 <state key="normal" title="Get MIDI file from iCloud"/>
                                 <connections>
                                     <action selector="getFileFromICloud:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eCI-2d-N8h"/>
@@ -65,22 +65,32 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No file loaded" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFQ-iG-4Zw">
+                                <rect key="frame" x="135" y="45.5" width="105.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kwt-F3-P6Y" secondAttribute="trailing" constant="10" id="39P-Sz-fCk"/>
                             <constraint firstItem="Kwt-F3-P6Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="3uV-8R-8ew"/>
                             <constraint firstItem="Igy-Yh-sX3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AuG-kz-adF"/>
-                            <constraint firstItem="do7-6N-0Dz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="54" id="Mwv-aj-kbp"/>
+                            <constraint firstItem="Igy-Yh-sX3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JcI-TE-bIR"/>
+                            <constraint firstItem="qFQ-iG-4Zw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25.5" id="ODc-dc-YNa"/>
                             <constraint firstItem="Igy-Yh-sX3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="YGg-ox-MVL"/>
                             <constraint firstItem="Kwt-F3-P6Y" firstAttribute="top" secondItem="do7-6N-0Dz" secondAttribute="bottom" constant="8" id="ajP-pt-Rsx"/>
+                            <constraint firstItem="do7-6N-0Dz" firstAttribute="top" secondItem="qFQ-iG-4Zw" secondAttribute="bottom" constant="8" id="bXc-T3-ucV"/>
                             <constraint firstItem="do7-6N-0Dz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iAI-qy-bzX"/>
+                            <constraint firstItem="qFQ-iG-4Zw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ns9-SF-s17"/>
                             <constraint firstItem="Igy-Yh-sX3" firstAttribute="top" secondItem="Kwt-F3-P6Y" secondAttribute="bottom" constant="10" id="oMB-Wi-v6p"/>
                             <constraint firstItem="Igy-Yh-sX3" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="yH2-Yk-7Ge"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="fileDisplayLabel" destination="qFQ-iG-4Zw" id="Og4-2Q-E1w"/>
                         <outlet property="tableView" destination="Igy-Yh-sX3" id="KmV-d0-KGt"/>
                     </connections>
                 </viewController>

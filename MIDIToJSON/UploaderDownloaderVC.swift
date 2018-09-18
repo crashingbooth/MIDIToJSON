@@ -12,12 +12,14 @@ class UploaderDownloaderVC: UIViewController {
     var customSeq = CustomSequencer()
     var firebaseManager: FirebaseManager!
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var fileDisplayLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         firebaseManager = FirebaseManager()
         tableView.delegate = firebaseManager
         tableView.dataSource = firebaseManager
-        firebaseManager.tableViewReloadDelegate = self
+        firebaseManager.displayDelegate = self
         firebaseManager.sequencerDelegate = customSeq
     }
 
@@ -36,11 +38,16 @@ class UploaderDownloaderVC: UIViewController {
     }
     @IBAction func clear(_ sender: Any) {
         customSeq.clear()
+        fileDisplayLabel.text = "No file loaded"
     }
     
 }
 
-extension UploaderDownloaderVC: TableViewReloadDelegate {
+extension UploaderDownloaderVC: DisplayDelegate {
+    func reloadLabel(_ text: String) {
+        fileDisplayLabel.text = "Loaded: \(text)"
+    }
+    
     func reloadData() {
         tableView.reloadData()
     }
@@ -53,6 +60,7 @@ extension UploaderDownloaderVC: UIDocumentPickerDelegate {
         
         let json = customSeq.getSequencerJSON()
         let name = urls[0].lastPathComponent.filter { $0 != "."}
+        fileDisplayLabel.text = "Loaded: \(name)"
         firebaseManager.sendFile(title: name, fileJSON: json)
     }
 }
