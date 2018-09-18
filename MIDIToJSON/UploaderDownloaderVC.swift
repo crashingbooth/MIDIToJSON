@@ -18,6 +18,7 @@ class UploaderDownloaderVC: UIViewController {
         tableView.delegate = firebaseManager
         tableView.dataSource = firebaseManager
         firebaseManager.tableViewReloadDelegate = self
+        firebaseManager.sequencerDelegate = customSeq
     }
 
     @IBAction func getFileFromICloud(_ sender: Any) {
