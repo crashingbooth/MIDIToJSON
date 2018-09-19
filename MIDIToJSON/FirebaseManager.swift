@@ -23,12 +23,16 @@ class FirebaseManager: NSObject, UITableViewDataSource, UITableViewDelegate {
         setupObservers()
     }
     
+    deinit {
+        rootRef.removeAllObservers()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filenames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "fileCell", for: indexPath) as? UITableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "fileCell", for: indexPath) as UITableViewCell? else { return UITableViewCell() }
         cell.textLabel?.text = filenames[indexPath.row]
         
         return cell
