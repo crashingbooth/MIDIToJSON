@@ -14,6 +14,7 @@
 		1F1AC5E8214F0387004519C6 /* CustomSequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AC5E7214F0387004519C6 /* CustomSequencer.swift */; };
 		1F1AC5EA214F0C6B004519C6 /* AKSequencer+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1AC5E9214F0C6B004519C6 /* AKSequencer+JSON.swift */; };
 		1F3260C6215112C3007921DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F3260C5215112C3007921DF /* GoogleService-Info.plist */; };
+		1F3260CA2155A2B6007921DF /* SequencerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3260C92155A2B6007921DF /* SequencerVC.swift */; };
 		1F964D57214FC09A002BBECB /* UploaderDownloaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F964D56214FC09A002BBECB /* UploaderDownloaderVC.swift */; };
 		1F964D59214FC33B002BBECB /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F964D58214FC33B002BBECB /* FirebaseManager.swift */; };
 		CAD1E0CA68F8FDAE38F6CAEB /* Pods_MIDIToJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D29811E3614B582326078598 /* Pods_MIDIToJSON.framework */; };
@@ -29,6 +30,7 @@
 		1F1AC5E7214F0387004519C6 /* CustomSequencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSequencer.swift; sourceTree = "<group>"; };
 		1F1AC5E9214F0C6B004519C6 /* AKSequencer+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AKSequencer+JSON.swift"; sourceTree = "<group>"; };
 		1F3260C5215112C3007921DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1F3260C92155A2B6007921DF /* SequencerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequencerVC.swift; sourceTree = "<group>"; };
 		1F964D56214FC09A002BBECB /* UploaderDownloaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploaderDownloaderVC.swift; sourceTree = "<group>"; };
 		1F964D58214FC33B002BBECB /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		B636D250B36128557DFA71B7 /* Pods-MIDIToJSON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIDIToJSON.release.xcconfig"; path = "Pods/Target Support Files/Pods-MIDIToJSON/Pods-MIDIToJSON.release.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				1F1AC5E7214F0387004519C6 /* CustomSequencer.swift */,
 				1F1AC5E9214F0C6B004519C6 /* AKSequencer+JSON.swift */,
 				1F964D56214FC09A002BBECB /* UploaderDownloaderVC.swift */,
+				1F3260C92155A2B6007921DF /* SequencerVC.swift */,
 				1F1AC5D9214F0365004519C6 /* Main.storyboard */,
 				1F964D58214FC33B002BBECB /* FirebaseManager.swift */,
 				1F1AC5DC214F0367004519C6 /* Assets.xcassets */,
@@ -239,6 +242,7 @@
 				1F964D57214FC09A002BBECB /* UploaderDownloaderVC.swift in Sources */,
 				1F1AC5EA214F0C6B004519C6 /* AKSequencer+JSON.swift in Sources */,
 				1F1AC5D6214F0365004519C6 /* AppDelegate.swift in Sources */,
+				1F3260CA2155A2B6007921DF /* SequencerVC.swift in Sources */,
 				1F1AC5E8214F0387004519C6 /* CustomSequencer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
